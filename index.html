@@ -213,10 +213,7 @@
     </div>
     
     <!-- Account Modal -->
-    <div id="accountModal" class="fixed inset-0 z-30 hidden">
-        <!-- Background overlay -->
-        <div class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div>
-        
+    <div id="accountModal" class="fixed inset-0 z-30 hidden bg-dark">
         <!-- Animated Lava Lamp Background (same as main) -->
         <div class="lava-background">
             <div class="blob blob-1"></div>
@@ -226,15 +223,16 @@
             <div class="blob blob-5"></div>
         </div>
         
+        <!-- Close Button - Top Left -->
+        <button id="closeModal" class="absolute top-6 left-6 z-40 text-white hover:text-zinc-300 transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
+        
         <!-- Modal Content -->
         <div class="min-h-screen flex flex-col items-center justify-center px-4 md:px-8 relative">
             <div class="w-full max-w-[1088px] relative flex flex-col items-center justify-center">
-                <!-- Close Button -->
-                <button id="closeModal" class="absolute top-8 right-0 text-white hover:text-zinc-300 transition-colors">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                    </svg>
-                </button>
                 
                 <div class="text-center space-y-8">
                     <!-- Account Headline -->
@@ -268,7 +266,7 @@
                             <span>Need help? Contact support</span>
                             <span class="hidden sm:inline">•</span>
                             <span>
-                                Back to <button id="backToMain" class="text-blue-400 hover:text-blue-300 underline">main page</button>
+                                mail@bero.land
                             </span>
                         </div>
                     </div>
