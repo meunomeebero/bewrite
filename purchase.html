@@ -216,12 +216,11 @@
     <!-- Confetti Animation -->
     <div class="confetti-container" id="confettiContainer"></div>
     
-    <!-- Close Button - Top Left -->
-    <button id="closeBtn" onclick="window.close()" class="absolute top-6 left-6 z-40 text-white hover:text-zinc-300 transition-colors">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-        </svg>
-    </button>
+    <!-- Logo Link - Top Left -->
+    <a href="index.html" class="absolute top-6 left-6 z-40 flex items-center space-x-3 hover:opacity-80 transition-opacity">
+        <img src="icon.png" alt="Bewrite" class="w-8 h-8 rounded-lg">
+        <span class="text-lg font-semibold text-white">Bewrite</span>
+    </a>
     
     <!-- Main Content -->
     <div class="min-h-screen flex flex-col items-center justify-center px-4 md:px-8 relative">
@@ -248,37 +247,36 @@
                 
                 <!-- Instructions -->
                 <div class="bg-white bg-opacity-5 border border-white border-opacity-10 rounded-lg p-6 max-w-md mx-auto">
-                    <ul class="space-y-3 text-left">
+                    <ul class="space-y-3">
                         <li class="flex items-start gap-3">
                             <span class="text-blue-400 mt-1">•</span>
-                            <p class="text-white text-sm">
+                            <p class="text-white text-sm mt-1.5">
                                 Check your email inbox for your license key
                             </p>
                         </li>
                         <li class="flex items-start gap-3">
                             <span class="text-blue-400 mt-1">•</span>
-                            <p class="text-white text-sm">
+                            <p class="text-white text-sm mt-1.5">
                                 Don't forget to check your spam folder if you don't see it
                             </p>
                         </li>
-                        <li class="flex items-start gap-3">
+                        <li class="flex items-center gap-3">
                             <span class="text-blue-400 mt-1">•</span>
-                            <p class="text-white text-sm">
-                                Download Bewrite and enter your license key to get started
+                            <p class="text-white text-sm mt-1.5" >
+                                Download Bewrite and enter your key
                             </p>
                         </li>
                     </ul>
                 </div>
                 
-                <!-- Important Notice -->
-                <div class="pt-8">
+                <!-- Footer -->
+                <div class="pt-8 space-y-4">
+                    <!-- Important Notice -->
                     <p class="text-xs text-zinc-500 max-w-md mx-auto">
                         <strong>Important:</strong> Your license key allows activation on one device at a time. You can deactivate and move your license to another device anytime.
                     </p>
-                </div>
-                
-                <!-- Footer -->
-                <div class="pt-8">
+                    
+                    <!-- Help Contact -->
                     <p class="text-sm text-zinc-500">
                         Need help? Contact us at <a href="mailto:mail@bero.land" class="text-blue-400 hover:text-blue-300">mail@bero.land</a>
                     </p>
@@ -318,20 +316,10 @@
             setTimeout(createConfetti, i * 50);
         }
         
-        // Close button functionality
-        document.getElementById('closeBtn').addEventListener('click', () => {
-            // Try to go back in history, if not possible, close window
-            if (window.history.length > 1) {
-                window.history.back();
-            } else {
-                window.location.href = 'index.html';
-            }
-        });
-        
         // Keyboard shortcuts
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                document.getElementById('closeBtn').click();
+                window.location.href = 'index.html';
             }
         });
     </script>
