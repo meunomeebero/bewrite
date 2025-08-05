@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your shortcut to everything - Raycast Clone</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'dark': '#0e0e0e',
+                        'darker': '#0a0a0a',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Lava lamp background animation */
+        .lava-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            mix-blend-mode: screen;
+            animation: float 20s infinite linear;
+        }
+        
+        .blob-1 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, #3B82F6 0%, #1E3A8A 70%);
+            bottom: 0;
+            left: 15%;
+            animation-duration: 25s;
+            animation-delay: 0s;
+        }
+        
+        .blob-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #60A5FA 0%, #1D4ED8 70%);
+            bottom: 0;
+            right: 20%;
+            animation-duration: 30s;
+            animation-delay: -10s;
+        }
+        
+        .blob-3 {
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, #1D4ED8 0%, #3B82F6 70%);
+            bottom: 0;
+            left: 40%;
+            animation-duration: 35s;
+            animation-delay: -20s;
+        }
+        
+        .blob-4 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, #1E3A8A 0%, #60A5FA 70%);
+            bottom: 0;
+            right: 40%;
+            animation-duration: 28s;
+            animation-delay: -15s;
+        }
+        
+        .blob-5 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, #60A5FA 0%, #3B82F6 70%);
+            bottom: 0;
+            left: 60%;
+            animation-duration: 22s;
+            animation-delay: -5s;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0.8);
+                opacity: 0.7;
+            }
+            25% {
+                transform: translateY(75vh) scale(1);
+                opacity: 0.9;
+            }
+            50% {
+                transform: translateY(50vh) scale(1.1);
+                opacity: 1;
+            }
+            75% {
+                transform: translateY(25vh) scale(1);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(-20vh) scale(0.8);
+                opacity: 0.7;
+            }
+        }
+        
+        /* Button hover effects */
+        .btn-glow:hover {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+            border-color: rgba(96, 165, 250, 0.5);
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Parallax effect */
+        .content-wrapper {
+            transform: translateZ(0);
+            transition: transform 0.1s ease-out;
+        }
+    </style>
+</head>
+<body class="h-full bg-dark text-white font-inter overflow-hidden">
+    <!-- Animated Lava Lamp Background -->
+    <div class="lava-background">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+        <div class="blob blob-4"></div>
+        <div class="blob blob-5"></div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="min-h-screen flex flex-col items-center justify-center px-4 md:px-8 relative">
+        <!-- Content Container with max width -->
+        <div class="w-full max-w-[1088px] relative flex flex-col items-center justify-center">
+            <!-- Logo positioned at top left of content area -->
+            <div class="absolute top-8 left-0 flex items-center space-x-3 z-10">
+                <img src="icon.png" alt="Bewrite" class="w-10 h-10 rounded-lg">
+                <span class="text-xl font-semibold text-white">Bewrite</span>
+            </div>
+            
+            <div class="content-wrapper text-center space-y-8">
+            <!-- Main Headline -->
+            <div class="space-y-6">
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
+                    Your shortcut to everything.
+                </h1>
+                <p class="text-lg md:text-xl text-zinc-300 max-w-xl mx-auto leading-relaxed">
+                    A collection of powerful productivity tools all within an extendable launcher. Fast, ergonomic and reliable.
+                </p>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
+                <button class="btn-glow flex items-center gap-3 bg-black bg-opacity-50 border border-white border-opacity-20 text-white px-6 py-3 rounded-md hover:bg-opacity-70 transition-all duration-300">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                    </svg>
+                    Download for Mac
+                </button>
+                <button class="btn-secondary flex items-center gap-3 bg-transparent border border-white border-opacity-20 text-white px-6 py-3 rounded-md transition-all duration-300">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                    Join Windows waitlist
+                </button>
+            </div>
+            
+            <!-- Footer Info -->
+            <div class="pt-8 space-y-2">
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-zinc-500">
+                    <span>v1.0.0</span>
+                    <span class="hidden sm:inline">•</span>
+                    <span>
+                        Made by <a href="https://bero.land" class="text-white hover:text-zinc-300">Bero</a> with ☕
+                    </span>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Parallax effect for mouse movement
+        document.addEventListener('mousemove', (e) => {
+            const { clientX, clientY } = e;
+            const { innerWidth, innerHeight } = window;
+            
+            const xPos = (clientX / innerWidth - 0.5) * 20;
+            const yPos = (clientY / innerHeight - 0.5) * 20;
+            
+            const contentWrapper = document.querySelector('.content-wrapper');
+            contentWrapper.style.transform = `translate(${xPos}px, ${yPos}px)`;
+            
+            // Very subtle parallax effect on blobs (only horizontal)
+            const blobs = document.querySelectorAll('.blob');
+            blobs.forEach((blob, index) => {
+                const speed = (index + 1) * 0.2;  // Reduced speed
+                const x = xPos * speed;
+                // Only apply horizontal parallax to not interfere with vertical lava lamp movement
+                blob.style.filter = `blur(40px)`;
+                blob.style.transform = `translateX(${x}px)`;
+            });
+        });
+        
+        // Reset parallax on mouse leave
+        document.addEventListener('mouseleave', () => {
+            const contentWrapper = document.querySelector('.content-wrapper');
+            contentWrapper.style.transform = 'translate(0, 0)';
+            
+            const blobs = document.querySelectorAll('.blob');
+            blobs.forEach(blob => {
+                blob.style.transform = 'translateX(0px)';
+            });
+        });
+        
+
+    </script>
+</body>
+</html>
