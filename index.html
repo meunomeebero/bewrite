@@ -559,6 +559,14 @@
             setTimeout(() => {
                 alert(`License key sent to ${email}! Please check your inbox.`);
                 
+                // Track license key request with DataFast
+                if (window.datafast) {
+                    window.datafast("lead_created", {
+                        email: email,
+                        type: "license_request"
+                    });
+                }
+                
                 sendKeyBtn.disabled = false;
                 sendKeyBtn.textContent = 'Send My License Key';
                 
@@ -597,6 +605,13 @@
                     // Success - start confetti explosion
                     startConfetti();
                     
+                    // Track lead creation with DataFast
+                    if (window.datafast) {
+                        window.datafast("lead_created", {
+                            email: email,
+                        });
+                    }
+                    
                     // Update UI to show success
                     joinBetaBtn.textContent = '🎉 Welcome to the beta!';
                     joinBetaBtn.classList.add('bg-green-600');
@@ -608,7 +623,6 @@
                     }, 3000);
                     
                 } else {
-                    // Error - probably already registered
                     joinBetaBtn.textContent = 'Already registered!';
                     joinBetaBtn.classList.add('bg-yellow-600');
                     joinBetaBtn.classList.remove('bg-blue-600');
@@ -650,6 +664,55 @@
         betaEmailInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
                 joinBetaBtn.click();
+            }
+        });
+        
+        // Health Check System
+        let healthCheckInterval;
+        
+        function startHealthCheck() {
+            // Initial health check
+            performHealthCheck();
+            
+            // Set up interval for every 30 seconds
+            healthCheckInterval = setInterval(performHealthCheck, 30000);
+        }
+        
+        function performHealthCheck() {
+            fetch('https://gowrite-api.fly.dev/health', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Health check successful');
+                } else {
+                    console.warn('Health check failed:', response.status);
+                }
+            })
+            .catch(error => {
+                console.error('Health check error:', error);
+            });
+        }
+        
+        function stopHealthCheck() {
+            if (healthCheckInterval) {
+                clearInterval(healthCheckInterval);
+                healthCheckInterval = null;
+            }
+        }
+        
+        // Start health check when page loads
+        startHealthCheck();
+        
+        // Pause health check when page is not visible (optimization)
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                stopHealthCheck();
+            } else {
+                startHealthCheck();
             }
         });
         
